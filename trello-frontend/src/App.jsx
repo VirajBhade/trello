@@ -1,12 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
-import Login from "./pages/Login"
+import Login from "./pages/login"
 import Register from "./pages/Register"
 import Teams from "./pages/Teams"
 import Projects from "./pages/Projects"
 import Tasks from "./pages/Tasks"
-
-import ProtectedRoute from "./components/ProtectedRoute"
 
 function App() {
 
@@ -16,42 +14,15 @@ function App() {
 
       <Routes>
 
-        
-
         <Route path="/" element={<Login />} />
-
-        <Route path="/login" element={<Login />} />
 
         <Route path="/register" element={<Register />} />
 
-      
+        <Route path="/teams" element={<Teams />} />
 
-        <Route
-          path="/teams"
-          element={
-            <ProtectedRoute>
-              <Teams />
-            </ProtectedRoute>
-          }
-        />
+        <Route path="/projects/:teamId" element={<Projects />} />
 
-        <Route
-          path="/projects/:teamId"
-          element={
-            <ProtectedRoute>
-              <Projects />
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/tasks/:projectId"
-          element={
-            <ProtectedRoute>
-              <Tasks />
-            </ProtectedRoute>
-          }
-        />
+        <Route path="/tasks/:projectId" element={<Tasks />} />
 
       </Routes>
 
